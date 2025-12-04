@@ -1,1 +1,16 @@
 @import "tailwindcss";
+
+@theme {
+  /* Primary Brand Colors */
+  --color-primary: #2563EB;   /* Main Blue */
+  --color-secondary: #3B82F6; /* Light Blue */
+  --color-accent: #1E40AF;    /* Dark Blue Accent */
+
+  /* Backgrounds */
+  --color-bg-light: #F1F5F9;  /* Light Mode BG */
+  --color-bg-dark: #0F172A;   /* Dark Mode BG */
+
+  /* Text Colors */
+  --color-text-main: #0F172A; /* Primary Text */
+  --color-text-light: #FFFFFF;
+}

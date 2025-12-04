@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import assets from "../assets/assets";
-import { Link } from "react-router-dom";
+import { Link, Links } from "react-router-dom";
 import { links } from "../data";
 import { RxHamburgerMenu } from "react-icons/rx"; // Hamburger Icon
 import { IoClose } from "react-icons/io5"; // Close Icon
+import { CiLogin } from "react-icons/ci";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,7 +25,7 @@ const Navbar = () => {
         <div className="hidden md:block">
           <input
             className="border border-gray-50 focus:border-2 transition-all duration-300 outline-none rounded-md px-4 py-2
-            w-[300px] lg:w-[420px]"
+            w-[300px] lg:w-[520px]"
             type="text"
             placeholder="Search any book notes..."
           />
@@ -48,6 +49,13 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+
+        <Link
+          to="/login"
+          className=" flex items-center gap-2 hover:translate-x-2 cursor-pointer duration-300 hover:text-primary hover:text-xl hover:font-bold"
+        >
+          <CiLogin className=" size-10" /> Login
+        </Link>
 
         {/* Hamburger Icon for Mobile */}
         <div
