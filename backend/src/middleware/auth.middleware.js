@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
-import UserModel from "../models/User.model";
+import UserModel from "../models/User.model.js";
 
-export const auth = async (req, res, next) => {
-  const authHeader = req.header.authorization;
+export const adminauth = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer"))
     return res.status(401).json({ message: "Token Not Provided" });

@@ -10,21 +10,32 @@ const generateToken = (user) => {
 // Register a new user
 export const register = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password } = req.body;
 
-    // If anything missing
+    // Required fields
     if (!name || !email || !password) {
       return res
         .status(400)
-        .json({ message: "Name, email and password is required" });
+        .json({ message: "Name, email and password are required" });
     }
-    // Check if account already exist
-    const exist = await UserModel.findOne({ email });
 
+    // Check if email already exist
+    const exist = await UserModel.findOne({ email });
     if (exist) return res.status(400).json({ message: "Email already exist" });
 
-    // Create New User
-    const user = await UserModel.create({ name, email, password, role });
+    // Allowed admin emails list (from .env)
+    const adminEmails = process.env.ADMIN_EMAILS.split(",");
+
+    // Role automatically assigned
+    const role = adminEmails.includes(email) ? "admin" : "user";
+
+    // Create new user
+    const user = await UserModel.create({
+      name,
+      email,
+      password,
+      role
+    });
 
     res.status(201).json({
       message: "New User Created",
@@ -35,9 +46,10 @@ export const register = async (req, res) => {
         role: user.role,
       },
     });
+
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Server error" });
+    return res.status(500).json({ message: "Server error" });
   }
 };
 
