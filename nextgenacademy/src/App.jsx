@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { Home, About, SignUp, Login, Dashboard } from "./pages/pages_index.js";
+import { Home, About, SignUp, Login, Dashboard, AddNotes, AddBooks } from "./pages/pages_index.js";
 
 
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -31,10 +31,10 @@ const App = () => {
         }
       >
         <Route index element={<Dashboard />} />
-        <Route path="notes" element={<h1>Notes</h1>} />
-        <Route path="books" element={<h1>Books</h1>} />
-        <Route path="blogs" element={<h1>Blogs</h1>} />
-        <Route path="settings" element={<h1>Settings</h1>} />
+        <Route path="add-notes" element={<AddNotes/>} />
+        <Route path="add-books" element={<AddBooks/>} />
+        <Route path="add-blogs" element={<h1>Blogs</h1>} />
+        <Route path="all-blogs" element={<h1>Settings</h1>} />
       </Route>
 
     </Routes>

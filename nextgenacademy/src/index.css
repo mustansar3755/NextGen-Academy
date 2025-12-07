@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake;
+}
 @theme {
   /* Primary Brand Colors */
   --color-primary: #2563EB;   /* Main Blue */
